@@ -1,0 +1,183 @@
+{
+  "settings": {
+    "index": {
+      "number_of_shards": "1",
+      "number_of_replicas": "1"
+    }
+  },
+  "mappings": {
+    "odontCase": {
+      "properties": {
+        "id": {
+          "type": "keyword",
+          "store": true
+        },
+        "NR": {
+          "type": "keyword",
+          "store": true
+        },
+        "E-post": {
+          "type": "text",
+          "analyzer": "standard"
+        },
+        "Opprettet": {
+          "type": "date",
+          "format": "dd.MM.yyyy"
+        },
+        "Endret": {
+          "type": "date",
+          "format": "dd.MM.yyyy"
+        },
+        "caseBook": {
+          "type": "text",
+          "analyzer": "standard"
+        },
+        "publicationYear": {
+          "type": "integer"
+        },
+        "caseNumber": {
+          "type": "integer"
+        },
+        "caseTitle": {
+          "type": "text",
+          "analyzer": "standard"
+        },
+        "gender": {
+          "type": "keyword",
+          "store": true
+        },
+        "quadrant": {
+          "type": "keyword",
+          "store": true
+        },
+        "toothNumber": {
+          "type": "keyword",
+          "store": true
+        },
+        "typeOfTreatment": {
+          "type": "keyword",
+          "store": true
+        },
+        "pulpalDiagnoses": {
+          "type": "keyword",
+          "store": true
+        },
+        "apicalDiagnoses": {
+          "type": "keyword",
+          "store": true
+        },
+        "otherDiagnoses": {
+          "type": "keyword",
+          "store": true
+        },
+        "trauma": {
+          "type": "keyword",
+          "store": true
+        },
+        "cbct": {
+          "type": "keyword",
+          "store": true
+        },
+        "symptoms": {
+          "type": "keyword",
+          "store": true
+        },
+        "preOperativeStatusOfTheTooth": {
+          "type": "keyword",
+          "store": true
+        },
+        "preOperativeRestoration": {
+          "type": "keyword",
+          "store": true
+        },
+        "disease": {
+          "type": "keyword",
+          "store": true
+        },
+        "medication": {
+          "type": "keyword",
+          "store": true
+        },
+        "dentalAnomaly": {
+          "type": "keyword",
+          "store": true
+        },
+        "treatment": {
+          "type": "keyword",
+          "store": true
+        },
+        "iatrogenicErrors": {
+          "type": "keyword",
+          "store": true
+        },
+        "instrumentationTecnique": {
+          "type": "keyword",
+          "store": true
+        },
+        "apicalSize": {
+          "type": "keyword",
+          "store": true
+        },
+        "taper": {
+          "type": "keyword",
+          "store": true
+        },
+        "irrigation": {
+          "type": "keyword",
+          "store": true
+        },
+        "intervisitMedication": {
+          "type": "keyword",
+          "store": true
+        },
+        "numberOfVisits": {
+          "type": "keyword",
+          "store": true
+        },
+        "obturationTechnique": {
+          "type": "keyword",
+          "store": true
+        },
+        "obturationMaterial": {
+          "type": "keyword",
+          "store": true
+        },
+        "rootEndFillingMaterials": {
+          "type": "keyword",
+          "store": true
+        },
+        "workingLength": {
+          "type": "keyword",
+          "store": true
+        },
+        "qualityOfRootFilling": {
+          "type": "keyword",
+          "store": true
+        },
+        "flareUp": {
+          "type": "keyword",
+          "store": true
+        },
+        "flapDesign": {
+          "type": "keyword",
+          "store": true
+        },
+        "biopsy": {
+          "type": "keyword",
+          "store": true
+        },
+        "postOpRestoration": {
+          "type": "keyword",
+          "store": true
+        },
+        "periodontitis": {
+          "type": "keyword",
+          "store": true
+        },
+        "restrictedAccess": {
+          "type": "integer"
+        }
+      }
+    }
+  }
+}

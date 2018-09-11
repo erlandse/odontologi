@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+	
+    <title>Faculty of dentistry - cases from endodontry</title>
+	<meta name="generator" content="BBEdit 9.6" />
+    <script type="text/javascript" charset="utf-8" src="https://app.uio.no/hf/ft/jquery/jquery.js"></script>
+    <script type="text/javascript" charset="utf-8" src="tools.js"></script>
+    <script type="text/javascript" charset="utf-8" src="index.js"></script>
+    <script type="text/javascript" charset="utf-8" src="aggs.js"></script>
+    <script type="text/javascript" charset="utf-8" src="JsonTool.js"></script>
+    <script type="text/javascript" charset="utf-8" src="ElasticClass.js"></script>
+
+    <link href="odont.css" type="text/css" rel="stylesheet"/>
+    <link href="uio-app-top-bottom.css" type="text/css" rel="stylesheet" media="screen, print" />
+    <link href="uio-app-print.css" type="text/css" rel="stylesheet" media="print" />
+	
+</head>
+<body onload='initialize()' onResize= "resize()">
+
+<!-- Page header starts -->
+<div id="app-head-wrapper"> 
+  <div id="line-top">
+    <div id="uiologo" class="english-uiologo">
+      <a href="http://www.uio.no/english/">University of Oslo</a>
+    </div> 
+  </div>
+  <div id="app-head">
+    <div id="app-name"> 
+      <a href='http://www.odont.uio.no/english/'>Faculty of Dentistry</a> 
+      <span id="tagline">Cases from endodontics</span>
+    </div>
+</div> 
+<!-- Page header end -->
+
+
+<br>
+<!--kopier her fra-->
+<table class='tableClass'  border='1'>
+<tr class='trResult'><th class='thResult'>Pulpal diagnoses</th><th class='thResult'>Apical diagnoses</th><th class='thResult'>Type of treatment</th>
+</tr>
+<tr>
+<td>
+<select id='pulpaselect' size='5' onClick='changeClick("pulpaselect")'></select>
+</td>
+<td>
+<select id='apikalselect' size='5' onClick='changeClick("apikalselect")'></select>
+</td>
+<td>
+<select id='behandlingselect' size='5' onClick='changeClick("behandlingselect")'></select>
+</td>
+</tr>
+</table>
+<br>
+<table class='tableClass'border='1'>
+<tr class='trResult'>
+<th class='thResult'>Other diagnoses</th>
+<td>
+<select id='facetselect' onchange='fillFacet()'>
+<option value=''>Select criteria</option>
+<option value='symptoms'>Symptoms</option>
+<option value='typeOfTreatment'>Type of treatment</option>
+<option value='disease'>Diseases</option>
+<option value='medication'>Medication</option>
+<option value='quadrant'>Quadrant</option>
+<option value='pulpalDiagnoses'>Pulpal diagnoses</option>
+<option value='apicalDiagnoses'>Apical diagnoses</option>
+<option value='otherDiagnoses'>Other diagnoses</option>
+<option value='trauma'>Trauma</option>
+<option value='cbct'>cbct</option>
+<option value='preOperativeStatusOfTheTooth'>Preoperative status of the tooth</option>
+<option value='preOperativeRestoration'>Preoperative restoration</option>
+<option value='dentalAnomaly'>Dental anomaly</option>
+<option value='iatrogenicErrors'>Iatrogenic errors</option>
+<option value='instrumentationTecnique'>Instrumentation technique</option>
+<option value='apicalSize'>Apical size</option>
+<option value='taper'>Taper</option>
+<option value='irrigation'>Irrigation</option>
+<option value='intervisitMedication'>Intervisit medication</option>
+<option value='numberOfVisits'>Number of visits</option>
+<option value='obturationTechnique'>Obturation technique</option>
+<option value='obturationMaterial'>Obturation material</option>
+<option value='rootEndFillingMaterials'>Root end filling materials</option>
+<option value='workingLength'>Working length</option>
+<option value='qualityOfRootFilling'>Quality of root filling</option>
+<option value='flareUp'>Flareup</option>
+<option value='flapDesign'>Flap design</option>
+<option value='biopsy'>Biopsy</option>
+<option value='gender'>Gender</option>
+<option value='postOpRestoration'>Postop restoration</option>
+<option value='periodontitis'>Periodontitis</option>
+</select>
+</td>
+</tr>
+<tr>
+<td>
+<select id='otherDiagnosesselect' size='5' onClick='changeClick("otherDiagnosesselect")'></select>
+</td>
+<td>
+<select id='facetsSelected' size='5' onClick='changeClick("facetsSelected")'>
+</select>
+</td>
+</tr>
+</tr>
+<tr><td colspan='2' style='text-align:center;'><input type='button' value='Reset' onclick='setZero()'></td></tr>
+</table>
+
+<!--kopier her til -->
+<br><br><br>
+
+<div id="resultatvisning">
+  <div id="bla"></div>
+</div>  
+<div id='testtable'>
+</div>
+<br><br><br>
+<br>
+<div id='test'></div>
+<div style="visibility:hidden;">
+<select id='cloneselect'>
+<option value='symptoms'>Symptoms</option>
+<option value='typeOfTreatment'>Type of treatment</option>
+<option value='disease'>Diseases</option>
+<option value='medication'>Medication</option>
+<option value='quadrant'>Quadrant</option>
+<option value='pulpalDiagnoses'>Pulpal diagnoses</option>
+<option value='apicalDiagnoses'>Apical diagnoses</option>
+<option value='otherDiagnoses'>Other diagnoses</option>
+<option value='trauma'>Trauma</option>
+<option value='cbct'>cbct</option>
+<option value='preOperativeStatusOfTheTooth'>Preoperative status of the tooth</option>
+<option value='preOperativeRestoration'>Preoperative restoration</option>
+<option value='dentalAnomaly'>Dental anomaly</option>
+<option value='iatrogenicErrors'>Iatrogenic errors</option>
+<option value='instrumentationTecnique'>Instrumentation technique</option>
+<option value='apicalSize'>Apical size</option>
+<option value='taper'>Taper</option>
+<option value='irrigation'>Irrigation</option>
+<option value='intervisitMedication'>Intervisit medication</option>
+<option value='numberOfVisits'>Number of visits</option>
+<option value='obturationTechnique'>Obturation technique</option>
+<option value='obturationMaterial'>Obturation material</option>
+<option value='rootEndFillingMaterials'>Root end filling materials</option>
+<option value='workingLength'>Working length</option>
+<option value='qualityOfRootFilling'>Quality of root filling</option>
+<option value='flareUp'>Flareup</option>
+<option value='flapDesign'>Flap design</option>
+<option value='biopsy'>Biopsy</option>
+<option value='postOpRestoration'>Postop restoration</option>
+<option value='periodontitis'>Periodontitis</option>
+<option value='gender'>Gender</option>
+
+</select>
+
+</div>
+<!-- Page footer starts -->
+<div id="app-footer-wrapper"> 
+  <div id="app-footer">
+    <div id="app-responsible"> 
+      <span class="vrtx-label">Responsible for this service</span> 
+      <span ><a style="color:blue;" target='_blank' href="http://www.usit.uio.no/english/about/organisation/bps/rc/">Department for Research Computing</a></span> 
+      <span>Data Capture and Collections Management Group</span> 
+    </div>
+  </div> 
+</div>
+<!-- Page footer end -->
+
+</body>
+</html>
